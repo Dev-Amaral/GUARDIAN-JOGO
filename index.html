@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pixel Battle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      margin: 0;
+      background: url('logo.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    h1 {
+      font-size: 75px;
+      margin-bottom: 30px;
+      color: #00ff88;
+      text-shadow: 0 0 10px #00ff88;
+    }
+
+    .button {
+      background-color: #002e20;
+      border: 3px solid #00ff88;
+      color: #00ff88;
+      padding: 40px 70px;
+      font-size: 30px;
+      margin: 20px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 4px 4px 0px #00ff88;
+    }
+
+    .button:hover {
+      background-color: #004f38;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    .pixel-button {
+      font-size: 40px;
+      padding: 50px 90px;
+      border-radius: 8px;
+    }
+
+    .icon-button {
+      position: absolute;
+      bottom: 20px;
+      width: 100px;
+      height: 100px;
+      font-size: 40px;
+      color: #00ff88;
+      background-color: #002e20;
+      border: 4px solid #00ff88;
+      border-radius: 50%;
+      transition: background 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-button:hover {
+      background-color: #004f38;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    #credits-button {
+      right: 20px;
+    }
+
+    #thanks-button {
+      left: 20px;
+    }
+
+    #credits, #thanks {
+      position: absolute;
+      bottom: 140px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ff88;
+      padding: 15px;
+      display: none;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    #credits {
+      right: 20px;
+    }
+
+    #thanks {
+      left: 20px;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+    @font-face {
+  font-family: 'PressStart2P';
+  src: url('https://fonts.gstatic.com/s/pressstart2p/v11/e3t4euO8T-267oIAQAu6jDQyK3nVivc.ttf') format('truetype');
+}
+
+.botao-retro {
+  font-family: 'PressStart2P', monospace;
+  background: black;
+  color: #0f0;
+  border: 4px solid #0f0;
+  padding: 16px 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #00ff00, 0 0 20px #008800;
+  animation: pulsar 1.2s infinite alternate;
+  margin: 20px;
+}
+
+.botao-retro:hover {
+  background-color: #003300;
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+}
+
+@keyframes pulsar {
+  from {
+    box-shadow: 0 0 10px #00ff00;
+  }
+  to {
+    box-shadow: 0 0 20px #00ff00, 0 0 40px #008800;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.caixa-mensagem {
+  background: #111;
+  border: 4px solid #0f0;
+  padding: 30px;
+  max-width: 600px;
+  color: #0f0;
+  font-family: 'PressStart2P', monospace;
+  font-size: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px #0f0;
+}
+
+  </style>
+</head>
+<body>
+
+  <button id="mostrarMensagem" class="button pixel-button">JOGAR</button>
+
+  <!-- Caixa da mensagem com botão X -->
+  <div id="mensagemOverlay" class="overlay" style="display: none;">
+      <div class="caixa-mensagem">
+  
+          <img src="cientista.gif" alt="Novas habilidades" class="imagem-mensagem">
+        
+          <p style="font-size: 20px;">
+          <strong style="color: #00ffff;">TRANSMISSÃO INICIADA...</strong><br> <br>
+          Olá, recruta. Meu nome é <strong style="color: #00ffff;">Dr. Thomas Zaleski</strong>, cientista-chefe da última base ecológica ainda viva.<br><br>
+          Nossa missão de restauração está em perigo. Um dos protótipos da era industrial o<strong style="color: #00ffff;"> RX - 99 </strong> ainda está operando...<br>
+          Ele deveria ter sido desativado há anos, mas um <strong style="color: #00ffff;">erro em seu código-fonte</strong> manteve ativo o protocolo de defesa.<br><br>
+          Seu  <span style="color: #00ffff;">braço direito foi destruído</span> durante a rebelião contra os seus criadores, mas ele continua funcional - movido por comando corrompidos.<br><br>
+          ⚠️ Último comando registrado:<br>
+  <em>“Neutralizar qualquer forma de vida.”</em><br><br>
+
+   Você foi escolhido para dar um fim nisso...<br>
+        </p>
+        <button id="botaoAvancar" class="botao-retro">Fase 1</button>
+        <button id="botaoFechar" class="botao-retro">Cancelar</button>
+      </div>
+    </div>
+  
+  
+  
+  
+      <script>
+          // Mostra a caixa de mensagem
+          document.getElementById("mostrarMensagem").addEventListener("click", function() {
+            document.getElementById("mensagemOverlay").style.display = "flex";
+          });
+        
+          // Botão de avançar
+          document.getElementById("botaoAvancar").addEventListener("click", function() {
+            // Aqui você pode redirecionar para outra página, por exemplo:
+            window.location.href = "../Segmented Boss Fight Template/index.html";
+            // ou apenas esconder a mensagem:
+            // document.getElementById("mensagemOverlay").style.display = "none";
+          });
+          // Fecha a mensagem sem avançar
+  document.getElementById("botaoFechar").addEventListener("click", function() {
+    document.getElementById("mensagemOverlay").style.display = "none";
+  });
+  
+        </script>
+
+
+  <button id="credits-button" class="icon-button" onclick="toggleInfo('credits')">i</button>
+
+  <button id="thanks-button" class="icon-button" onclick="toggleInfo('thanks')">⭐</button>
+
+  <div id="credits">
+    <p><strong>Controles:</strong><br>
+      Hercules Oliveira - (77)99811-6776<br>
+      Davi Amaral - (77) 98149-8090<br>
+      Yuri Matheus - (77) 98807-1590<br>
+      Lucas Andrade - (77) 99848-3058</p>
+  </div>
+
+  <div id="thanks">
+    <p><strong>Agradecimentos:</strong><br>
+      - Mateus Ferreira Moreira<br>
+      - Progranador que ajudou na exportação HTML<br>
+      </p>
+  </div>
+
+  <script>
+
+    function toggleInfo(section) {
+      const element = document.getElementById(section);
+      element.style.display = element.style.display === "block" ? "none" : "block";
+    }
+  </script>
+
+</body>
+</html>
